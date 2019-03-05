@@ -88,7 +88,7 @@
 // console.log(`This is ${firstName} ${lastName}. He was bron in ${yearOfBirth}. Today, he is ${calcAge(yearOfBirth)} years old.`);
 
 // const n = `${firstName} ${lastName}`;
-// console.log(n.startsWith('j'));
+// console.log(n.startsWith('J'));
 // console.log(n.endsWith('th'));
 // console.log(n.includes('oh'));
 // console.log(`${firstName} `.repeat(5));
@@ -102,7 +102,7 @@
 
 // const years = [1990, 1965, 1982, 1937];
 
-// // ES5
+// ES5
 // var ages5 = years.map(function(el) {
 //     return 2016 - el;
 // });
@@ -117,8 +117,7 @@
 // console.log(ages6);
 
 // ages6 = years.map((el, index) => {
-//     const now = new 
-//     Date().getFullYear();
+//     const now = new Date().getFullYear();
 //     const age = now - el;
 //     return `Age element ${index + 1}: ${age}.`
 // });
@@ -191,12 +190,12 @@
 
 
 // ES6
-// Person.prototype.myFriends5 = function(friends) {
+// Person.prototype.myFriends6 = function(friends) {
 //     var arr = friends.map(el => `${this.name} is friends with ${el}`);
 //     console.log(arr);
 // }
 
-// new Person('Mike').myFriends5(friends);
+// new Person('Mike').myFriends6(friends);
 
 
 ////////////////////////////////
@@ -230,8 +229,7 @@
 //     return [age, 65 - age];
 // }
 
-// const [age2, retirement] = 
-// calcAgeRetirement(1990);
+// const [age2, retirement] = calcAgeRetirement(1990);
 // console.log(age2);
 // console.log(retirement);
 
@@ -243,14 +241,14 @@
 
 // const boxes = document.querySelectorAll('.box');
 
-//ES5
+// //ES5
 // var boxesArr5 = Array.prototype.slice.call(boxes);
 // boxesArr5.forEach(function(cur) {
 //     cur.style.backgroundColor = 'dodgerblue';
 // });
 
-//ES6
-// Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerBlue');
+// //ES6
+// Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'pink');
 
 
 //ES5
@@ -282,7 +280,7 @@
 // console.log(full.indexOf(true));
 // console.log(ages[full.indexOf(true)]);
 
-//ES6
+// ES6
 // console.log(ages.findIndex(cur => cur >= 18));
 // console.log(ages.find(cur => cur >= 18));
 
@@ -326,8 +324,10 @@
 
 //ES5 
 // function isFullAge5() {
-//     // console.log(arguments);
-//     var argsArr = Array.prototype.slice.call(arguments);
+    // console.log(arguments);
+    // var argsArr = Array.from(arguments); // converts to an array
+//     var argsArr = Array.prototype.slice.call(arguments); // also converts to an array
+//     console.log(argsArr);
 
 //     argsArr.forEach(function(cur) {
 //         console.log((2016 - cur) >= 18);
@@ -349,19 +349,20 @@
 
 
 // function isFullAge5(limit) {
-//         var argsArr = Array.prototype.slice.call(arguments, 1);
+//         // console.log(arguments); //[21, 1990, 1999, 1965]
+//         var argsArr = Array.prototype.slice.call(arguments, 1); // sliced 21 from array
+//         // console.log(argsArr);   // [1990, 1999, 1965]
 
-//         argsArr.forEach(function(cur) {
+//         argsArr.forEach(function(cur) { // cur = [1990, 1999, 1965]
 //             console.log((2016 - cur) >= limit);
 //         });
 //     }
     
 //     isFullAge5(21, 1990, 1999, 1965);
-    // isFullAge5(1990, 1999, 1965, 2016, 1987);
     
     
     // ES6
-    // function isFullAge6(limit, ...years) {
+    // function isFullAge6(limit, ...years) {  //limit = 16, ...years = [1990, 1999, 1965, 2016, 1987]
     //     years.forEach(cur => console.log((2016 - cur) >= limit));
     // }
     // isFullAge6(16, 1990, 1999, 1965, 2016, 1987);
@@ -385,7 +386,9 @@
 // };
 
 // var john = new SmithPerson('John', 1990);
+// console.log(john);
 // var emily = new SmithPerson('Emily', 1983, 'Diaz', 'spanish');
+// console.log(emily);
 
 
 //ES6
@@ -397,7 +400,9 @@
 // }
 
 // var john = new SmithPerson('John', 1990);
+// console.log(john);
 // var emily = new SmithPerson('Emily', 1983, 'Diaz', 'spanish');
+// console.log(emily);
 
 
 
@@ -405,35 +410,36 @@
 ////////////////////////////////
 // Lecture: Maps
 
-// const question = new Map();
-// question.set('question', 'What is the official name of the latest major Javascript version?');
-// question.set(1, 'ES5');
-// question.set(2, 'ES6');
-// question.set(3, 'ES2015');
-// question.set(4, 'ES7');
-// question.set('correct', 3);
-// question.set(true, 'Correct answer');
-// question.set(false, 'Wrong, please try again');
+const question = new Map();
+question.set('question', 'What is the official name of the latest major Javascript version?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'Correct answer');
+question.set(false, 'Wrong, please try again');
 
-// console.log(question.get('question'));
+console.log(question.get('question'));
 // console.log(question.size);
 
 // if(question.has(4)) {
-//     question.delete(4);
+//     // question.delete(4);
+//     console.log('Answer 4 is here');
 // }
 
 // question.clear();
 
 // question.forEach((value, key) => console.log(`This is ${key}, and it's set to ${value}`));
 
-// for (let [key, value] of question.entries()) {
-//     if (typeof(key) === 'number') {
-//         console.log(`Answer ${key}: ${value}`);
-//     }
-// }
+for (let [key, value] of question.entries()) {
+    if (typeof(key) === 'number') {
+        console.log(`Answer ${key}: ${value}`);
+    }
+}
 
-// const ans = parseInt(prompt('Write the correct answer'));
-// console.log(question.get(ans === question.get('correct')));
+const ans = parseInt(prompt('Write the correct answer'));
+console.log(question.get(ans === question.get('correct')));
 
 
 ////////////////////////////////
@@ -548,7 +554,7 @@
 
 ////////////////////////////////
 // CODING CHALLENGE
-
+/*
 class Element {
     constructor(name, buildYear) {
         this.name = name;
@@ -636,3 +642,4 @@ function reportStreets(s) {
 
 reportParks(allParks);
 reportStreets(allStreets);
+*/
