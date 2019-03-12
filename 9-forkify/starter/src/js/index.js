@@ -89,9 +89,10 @@ const controlRecipe = async () => {
 
             // Render the recipe
             clearLoader();
-            recipeView.renderRecipe(state.recipe);
+            recipeView.renderRecipe(
                 state.recipe,
                 state.likes.isLiked(id)
+            );
 
         } catch (err) {
             console.log(err);
